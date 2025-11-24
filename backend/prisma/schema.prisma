@@ -5,8 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -22,8 +21,9 @@ enum StatusEnum {
 model User {
   id                  String    @id @default(uuid())
   email               String    @unique
+  name                String
+  surname             String
   passwordHash        String
-  accessToken         String
   tasks               Task[]
 }
 
