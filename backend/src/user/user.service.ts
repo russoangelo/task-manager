@@ -15,10 +15,18 @@ export class UserService {
         })
 
         if(!user) {
-            throw new NotFoundException("User not found!")
+            throw new NotFoundException("user doesnt exist")
         }
 
         return user
+    }
+
+    async getByEmail(email: string) {
+        return await this.prismaService.user.findUnique({
+            where: {
+                email
+            }
+        })
     }
 
     async create(dto: UserCreateDto) {
