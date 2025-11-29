@@ -19,8 +19,8 @@ enum StatusEnum {
 }
 
 model User {
-  id                  String    @id @default(uuid())
-  email               String    @unique
+  id                  String      @id @default(uuid())
+  email               String      @unique
   name                String
   surname             String
   passwordHash        String
@@ -30,13 +30,13 @@ model User {
 }
 
 model Task {
-  id                  String    @id @default(uuid())
+  id                  String      @id @default(uuid())
   name                String
   description         String
-  status              StatusEnum
+  status              StatusEnum  @default(PENDING)
 
-  user                User      @relation(fields: [userId], references: [id])
+  user                User        @relation(fields: [userId], references: [id])
   userId              String
-  
+
   @@map("task")
 }
