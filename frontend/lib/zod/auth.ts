@@ -1,0 +1,39 @@
+import * as z from "zod"
+
+export const passwordSchema = z
+    .string()
+    .min(8, "Password must be at least 8 characters")
+    .max(1000, "Password must be less than 1000 characters")
+    .regex(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+        "Password must contain at least one number, one uppercase, and one lowercase letter",
+    );
+
+export const emailSchema = z
+    .string()
+    .email()
+    .min(1)
+    .transform((email) => email.toLowerCase())
+
+
+export const nameSchema = z
+    .string()
+    .min(1)
+
+export const usernameSchema = z
+    .string()
+    .min(1)
+    .transform((username) => username.toLowerCase())
+
+
+export const signUpSchema = z.object({
+    email: emailSchema,
+    password: passwordSchema,
+    name: nameSchema,
+    username: usernameSchema
+})
+
+export const signInSchema = z.object({
+    username: usernameSchema,
+    password: passwordSchema
+})
