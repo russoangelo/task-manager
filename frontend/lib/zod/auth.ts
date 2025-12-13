@@ -20,20 +20,20 @@ export const nameSchema = z
     .string()
     .min(1)
 
-export const usernameSchema = z
+export const surnameSchema = z
     .string()
     .min(1)
-    .transform((username) => username.toLowerCase())
+    .transform((surname) => surname.toLowerCase())
 
 
 export const signUpSchema = z.object({
     email: emailSchema,
     password: passwordSchema,
     name: nameSchema,
-    username: usernameSchema
+    surname: surnameSchema
 })
 
 export const signInSchema = z.object({
-    username: usernameSchema,
+    surname: surnameSchema,
     password: passwordSchema
 })
