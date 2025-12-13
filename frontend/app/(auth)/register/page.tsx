@@ -1,5 +1,9 @@
-export default function Register() {
+import SignUp from "./page-client"
+
+export default function RegisterPage() {
     return (
-        <div></div>
+        <div className="flex min-h-screen items-center justify-center">
+            <SignUp/>
+        </div>
     )
 }
