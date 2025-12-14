@@ -34,6 +34,6 @@ export const signUpSchema = z.object({
 })
 
 export const signInSchema = z.object({
-    surname: surnameSchema,
+    email: emailSchema,
     password: passwordSchema
 })
